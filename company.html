@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="株式会社EIRIAの会社概要、企業理念、代表取締役 桁山絢有からのメッセージをご紹介します。">
+<title>会社概要 | 株式会社EIRIA</title>
+<link rel="icon" type="image/png" href="images/eiria-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  /* 理念 */
+  .philosophy {
+    background: var(--color-white);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .philosophy::before {
+    content: "PHILOSOPHY";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-display);
+    font-size: clamp(8rem, 18vw, 16rem);
+    font-weight: 300;
+    color: rgba(26, 37, 71, 0.025);
+    letter-spacing: 0.1em;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  
+  .philosophy-inner {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .philosophy-mark {
+    width: 70px;
+    height: 1px;
+    background: var(--color-gold);
+    margin: 0 auto 2.5rem;
+  }
+  
+  .philosophy-statement {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.9;
+    margin-bottom: 3.5rem;
+    letter-spacing: 0.05em;
+    color: var(--color-indigo);
+  }
+  
+  .philosophy-statement .accent {
+    color: var(--color-gold-deep);
+  }
+  
+  .philosophy-text {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    line-height: 2.3;
+    color: var(--color-text-sub);
+  }
+  
+  /* 代表挨拶 */
+  .greeting {
+    background: var(--color-bg-alt);
+    padding: 7rem 2rem;
+  }
+  
+  .greeting-header {
+    text-align: center;
+    margin-bottom: 5rem;
+  }
+  
+  .greeting-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  
+  .greeting-visual {
+    aspect-ratio: 3 / 4;
+    background: var(--color-indigo);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .greeting-visual::before {
+    content: "";
+    position: absolute;
+    inset: 1.25rem;
+    border: 1px solid rgba(201, 169, 106, 0.4);
+  }
+  
+  .greeting-visual::after {
+    content: "REPRESENTATIVE";
+    position: absolute;
+    bottom: 2.25rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: var(--color-gold-light);
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.5em;
+    z-index: 2;
+  }
+  
+  .greeting-visual .visual-name {
+    font-family: var(--font-serif);
+    color: rgba(255, 255, 255, 0.18);
+    font-size: clamp(4rem, 8vw, 6rem);
+    font-weight: 300;
+    line-height: 1.2;
+    text-align: center;
+    z-index: 1;
+    letter-spacing: 0.1em;
+  }
+  
+  .greeting-text p {
+    font-size: 1rem;
+    line-height: 2.2;
+    margin-bottom: 1.5rem;
+    color: var(--color-text-sub);
+  }
+  
+  .greeting-text p.lead {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    color: var(--color-indigo);
+    line-height: 2;
+    margin-bottom: 2rem;
+  }
+  
+  .greeting-sign {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-line);
+    text-align: right;
+  }
+  
+  .greeting-sign-label {
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    color: var(--color-gold-deep);
+    letter-spacing: 0.3em;
+    margin-bottom: 0.75rem;
+  }
+  
+  .greeting-sign-company {
+    font-size: 0.9rem;
+    color: var(--color-text-sub);
+    margin-bottom: 0.4rem;
+  }
+  
+  .greeting-sign-position {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.4rem;
+  }
+  
+  .greeting-sign-name {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--color-indigo);
+    letter-spacing: 0.1em;
+  }
+  
+  /* 会社情報 */
+  .company-info {
+    background: var(--color-white);
+  }
+  
+  .info-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  .info-table {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-collapse: collapse;
+  }
+  
+  .info-table th,
+  .info-table td {
+    text-align: left;
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid var(--color-line);
+    vertical-align: top;
+  }
+  
+  .info-table th {
+    width: 30%;
+    font-weight: 500;
+    color: var(--color-indigo);
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+  }
+  
+  .info-table td {
+    color: var(--color-text-sub);
+    font-size: 0.95rem;
+    line-height: 1.9;
+  }
+  
+  .info-table tr:first-child th,
+  .info-table tr:first-child td {
+    border-top: 1px solid var(--color-line);
+  }
+  
+  .info-table a {
+    color: var(--color-gold-deep);
+    border-bottom: 1px solid var(--color-gold-deep);
+  }
+  
+  @media (max-width: 768px) {
+    .greeting {
+      padding: 4.5rem 1.5rem;
+    }
+    
+    .greeting-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    .greeting-visual {
+      max-width: 280px;
+      margin: 0 auto;
+    }
+    
+    .info-table th,
+    .info-table td {
+      display: block;
+      width: 100%;
+      padding: 0.75rem 0;
+    }
+    
+    .info-table th {
+      border-bottom: none;
+      padding-top: 1.5rem;
+    }
+    
+    .info-table tr:first-child td {
+      border-top: none;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/eiria-logo.png" alt="株式会社EIRIA">
+        <span class="logo-jp-sub">株式会社</span>
+      </a>
+    </div>
+    <nav>
+      <ul class="nav-list" id="navList">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="company.html" class="active">Company</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="メニュー">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <h1 class="page-hero-title">Company</h1>
+      <p class="page-hero-subtitle">会社概要</p>
+    </div>
+  </section>
+
+  <!-- 企業理念 -->
+  <section class="section philosophy">
+    <div class="section-inner philosophy-inner">
+      <span class="section-label">Philosophy</span>
+      <h2 class="section-title-en" style="margin-bottom: 4rem;">Our Vision</h2>
+      <div class="philosophy-mark"></div>
+      <p class="philosophy-statement">
+        自分を<span class="accent">認識</span>し、<br>
+        自分の力で<span class="accent">未来</span>を切り開く。
+      </p>
+      <p class="philosophy-text">
+        EIRIAという名前には、「自分を認識し、自分の力で未来を切り開く」
+        という想いを込めています。
+        私たちは、AI教育を中心とした学びの場を通じて、
+        誰もが新しい知識やスキルに触れ、自分の可能性を広げていける環境づくりを目指しています。
+      </p>
+    </div>
+  </section>
+
+  <!-- 代表挨拶 -->
+  <section id="message" class="greeting">
+    <div class="greeting-header">
+      <span class="section-label">Message</span>
+      <h2 class="section-title-en">Representative's Message</h2>
+      <h3 class="section-title">代表挨拶</h3>
+    </div>
+    <div class="greeting-grid">
+      <div class="greeting-visual" aria-hidden="true">
+        <span class="visual-name">A.K.</span>
+      </div>
+      <div class="greeting-text">
+        <p class="lead">
+          株式会社EIRIAのホームページをご覧いただき、ありがとうございます。<br>
+          代表取締役のケタヤマ アユミです。
+        </p>
+        <p>
+          現在、AIをはじめとするテクノロジーの進化により、
+          私たちの働き方や学び方、そして人生の選択肢は大きく広がり始めています。
+          しかし一方で、「難しそう」「自分には関係ない」と感じてしまい、
+          新しい可能性に触れる機会を持てていない人が多いことも感じています。
+        </p>
+        <p>
+          私はこれまで、特別なエリートとしてキャリアを歩んできたわけではありません。
+          むしろ、どこにでもいる一人の社会人として働いてきました。
+          だからこそ、「新しいことを学ぶことで人生の選択肢は広がる」ということを実感しています。
+        </p>
+        <p>
+          株式会社EIRIAは、そうした想いから設立しました。
+        </p>
+        <p>
+          EIRIAという名前には、<br>
+          <strong style="color: var(--color-gold-deep); font-weight: 500;">「自分を認識し、自分の力で未来を切り開く」</strong>
+          という意味を込めています。
+        </p>
+        <p>
+          私たちは、AI教育を中心とした学びの場を通じて、
+          誰もが新しい知識やスキルに触れ、
+          自分の可能性を広げていける環境づくりを目指しています。
+        </p>
+        <p>
+          EIRIAは、年齢や性別、これまでの経験に関わらず、
+          学びたいと思うすべての方に開かれた場所でありたいと考えています。
+          その中で、私自身の経験も踏まえながら、
+          女性がより自由に能力を発揮できる環境づくりにも
+          自然な形で貢献していければと願っています。
+        </p>
+        <p>
+          テクノロジーが進化する時代だからこそ、
+          大切なのは「誰が使うか」ではなく、
+          どのように未来をつくっていくかだと私たちは考えています。
+        </p>
+        <p>
+          EIRIAは、学びと挑戦を通じて、
+          一人ひとりの可能性が広がる社会を目指してまいります。
+        </p>
+        <p>
+          今後とも、どうぞよろしくお願い申し上げます。
+        </p>
+        <div class="greeting-sign">
+          <p class="greeting-sign-label">REPRESENTATIVE</p>
+          <p class="greeting-sign-company">株式会社EIRIA</p>
+          <p class="greeting-sign-position">代表取締役</p>
+          <p class="greeting-sign-name">桁山 絢有</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 会社情報 -->
+  <section class="section company-info">
+    <div class="section-inner">
+      <div class="info-header">
+        <span class="section-label">Profile</span>
+        <h2 class="section-title-en">Corporate Profile</h2>
+        <h3 class="section-title">会社情報</h3>
+      </div>
+      <table class="info-table">
+        <tr>
+          <th>会社名</th>
+          <td>株式会社EIRIA(エイリア)</td>
+        </tr>
+        <tr>
+          <th>代表者</th>
+          <td>代表取締役 桁山 絢有(ケタヤマ アユミ)</td>
+        </tr>
+        <tr>
+          <th>設立</th>
+          <td>2026年2月27日</td>
+        </tr>
+        <tr>
+          <th>所在地</th>
+          <td>〒169-0073<br>東京都新宿区百人町1-9-14</td>
+        </tr>
+        <tr>
+          <th>事業内容</th>
+          <td>
+            ・AIスクール「はじめてのAIスクール 彩成」の運営<br>
+            ・AI関連コンサルティング・ソリューション事業<br>
+            ・その他、AI技術を活用した事業
+          </td>
+        </tr>
+        <tr>
+          <th>連絡先</th>
+          <td>
+            Email:<a href="mailto:eiria@eiria-ltd.com">eiria@eiria-ltd.com</a><br>
+            または<a href="contact.html">お問い合わせフォーム</a>よりご連絡ください
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="images/eiria-logo.png" alt="株式会社EIRIA">
+      <p>
+        AI教育を中心に、<br>
+        学びと挑戦を通じて、<br>
+        一人ひとりの可能性が広がる<br>
+        社会を目指してまいります。
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Sitemap</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="company.html">Company</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Information</h4>
+      <ul>
+        <li><a href="company.html#message">代表挨拶</a></li>
+        <li><a href="privacy.html">プライバシーポリシー</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 EIRIA Inc. All Rights Reserved.
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

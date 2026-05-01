@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="株式会社EIRIAの事業内容。AIスクール『はじめてのAIスクール 彩成』をはじめとするAI関連事業をご紹介します。">
+<title>事業内容 | 株式会社EIRIA</title>
+<link rel="icon" type="image/png" href="images/eiria-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .service-detail {
+    padding: 7rem 2rem;
+    background: var(--color-white);
+  }
+  
+  .service-detail:nth-child(even) {
+    background: var(--color-bg-alt);
+  }
+  
+  .service-detail-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  
+  .service-detail:nth-child(even) .service-detail-inner {
+    grid-template-columns: 1.3fr 1fr;
+  }
+  
+  .service-detail:nth-child(even) .service-detail-visual {
+    order: 2;
+  }
+  
+  .service-detail-visual {
+    aspect-ratio: 1 / 1;
+    background: var(--color-indigo);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .service-detail-visual::before {
+    content: "";
+    position: absolute;
+    inset: 1.5rem;
+    border: 1px solid rgba(201, 169, 106, 0.4);
+    pointer-events: none;
+  }
+  
+  .service-detail-visual.alt {
+    background: linear-gradient(135deg, var(--color-indigo) 0%, var(--color-indigo-light) 100%);
+  }
+  
+  .service-detail-visual .visual-text {
+    font-family: var(--font-serif);
+    font-size: clamp(6rem, 12vw, 12rem);
+    color: rgba(255, 255, 255, 0.12);
+    font-weight: 300;
+    line-height: 1;
+    z-index: 1;
+  }
+  
+  .service-detail-visual .visual-label {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    letter-spacing: 0.5em;
+    color: var(--color-gold-light);
+    z-index: 2;
+  }
+  
+  .service-no {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    letter-spacing: 0.4em;
+    color: var(--color-gold-deep);
+    margin-bottom: 1.25rem;
+  }
+  
+  .service-detail-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 500;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+    color: var(--color-indigo);
+  }
+  
+  .service-detail-title-en {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--color-text-muted);
+    letter-spacing: 0.25em;
+    margin-bottom: 2rem;
+  }
+  
+  .service-detail-desc {
+    font-size: 1rem;
+    line-height: 2.1;
+    color: var(--color-text-sub);
+    margin-bottom: 1.5rem;
+  }
+  
+  .feature-list {
+    list-style: none;
+    margin-top: 2rem;
+  }
+  
+  .feature-list li {
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--color-line);
+    display: flex;
+    gap: 1.5rem;
+    align-items: baseline;
+  }
+  
+  .feature-list li:last-child {
+    border-bottom: 1px solid var(--color-line);
+  }
+  
+  .feature-list .feature-num {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    color: var(--color-gold-deep);
+    letter-spacing: 0.15em;
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+  
+  .feature-list .feature-content strong {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: var(--color-indigo);
+    font-size: 1rem;
+  }
+  
+  .feature-list .feature-content span {
+    font-size: 0.9rem;
+    color: var(--color-text-sub);
+    line-height: 1.8;
+  }
+  
+  .coming-soon {
+    display: inline-block;
+    padding: 0.4rem 1.1rem;
+    background: var(--color-gold);
+    color: var(--color-white);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  
+  .cta-section-bottom {
+    background: var(--color-indigo);
+    color: var(--color-white);
+    text-align: center;
+    padding: 6rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cta-section-bottom::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 70% 50%, rgba(201, 169, 106, 0.1) 0%, transparent 50%);
+  }
+  
+  .cta-section-bottom > * {
+    position: relative;
+    z-index: 2;
+  }
+  
+  @media (max-width: 768px) {
+    .service-detail {
+      padding: 4rem 1.5rem;
+    }
+    
+    .service-detail-inner,
+    .service-detail:nth-child(even) .service-detail-inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+    
+    .service-detail:nth-child(even) .service-detail-visual {
+      order: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">
+      <a href="index.html">
+        <img src="images/eiria-logo.png" alt="株式会社EIRIA">
+        <span class="logo-jp-sub">株式会社</span>
+      </a>
+    </div>
+    <nav>
+      <ul class="nav-list" id="navList">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html" class="active">Services</a></li>
+        <li><a href="company.html">Company</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="メニュー">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="page-hero-inner">
+      <h1 class="page-hero-title">Services</h1>
+      <p class="page-hero-subtitle">事業内容</p>
+    </div>
+  </section>
+
+  <!-- AIスクール 彩成 -->
+  <section class="service-detail">
+    <div class="service-detail-inner">
+      <div class="service-detail-visual">
+        <span class="visual-text">彩</span>
+        <span class="visual-label">SAISEI AI SCHOOL</span>
+      </div>
+      <div>
+        <p class="service-no">SERVICE 01</p>
+        <h2 class="service-detail-title">はじめてのAIスクール 彩成</h2>
+        <p class="service-detail-title-en">AI SCHOOL SAISEI</p>
+        <p class="service-detail-desc">
+          「AIに興味はあるけれど、何から始めたらいいかわからない」——
+          そんな方のためのスクールです。プログラミングや専門知識がなくても、
+          AIを日常や仕事に活かせるようになることを目指しています。
+        </p>
+        <p class="service-detail-desc">
+          一人ひとりの「学びたい」気持ちに寄り添い、基礎から実践まで段階的にサポート。
+          安心して質問できる環境を大切にしています。
+        </p>
+        <ul class="feature-list">
+          <li>
+            <span class="feature-num">01</span>
+            <div class="feature-content">
+              <strong>初心者にやさしいカリキュラム</strong>
+              <span>専門用語を極力避け、誰もが理解しやすい言葉で解説します。</span>
+            </div>
+          </li>
+          <li>
+            <span class="feature-num">02</span>
+            <div class="feature-content">
+              <strong>一人ひとりに寄り添った指導</strong>
+              <span>つまずきを残さず、安心して学べる環境を整えています。</span>
+            </div>
+          </li>
+          <li>
+            <span class="feature-num">03</span>
+            <div class="feature-content">
+              <strong>実践重視の内容</strong>
+              <span>仕事や生活ですぐに使えるAI活用スキルが身につきます。</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI関連事業 -->
+  <section class="service-detail">
+    <div class="service-detail-inner">
+      <div class="service-detail-visual alt">
+        <span class="visual-text">AI</span>
+        <span class="visual-label">AI BUSINESS SOLUTIONS</span>
+      </div>
+      <div>
+        <p class="service-no">SERVICE 02</p>
+        <span class="coming-soon">COMING SOON</span>
+        <h2 class="service-detail-title">AI関連事業</h2>
+        <p class="service-detail-title-en">AI BUSINESS SOLUTIONS</p>
+        <p class="service-detail-desc">
+          AIスクール事業を起点に、AI技術を活用した
+          幅広い事業の展開を予定しています。
+          企業向けのAI導入支援、ソリューション提供、コンサルティングなど、
+          学びと実装の両面から、社会のニーズに応えていきます。
+        </p>
+        <p class="service-detail-desc">
+          AI技術が一部の専門家のものではなく、すべての人々と組織にとって
+          価値あるツールとなる未来を目指し、着実に事業領域を広げてまいります。
+        </p>
+        <ul class="feature-list">
+          <li>
+            <span class="feature-num">01</span>
+            <div class="feature-content">
+              <strong>企業向けAI導入支援</strong>
+              <span>業務効率化や新規事業創出のためのAI活用をサポートします。</span>
+            </div>
+          </li>
+          <li>
+            <span class="feature-num">02</span>
+            <div class="feature-content">
+              <strong>AIソリューション提供</strong>
+              <span>お客様の課題に応じたカスタムソリューションをご提案します。</span>
+            </div>
+          </li>
+          <li>
+            <span class="feature-num">03</span>
+            <div class="feature-content">
+              <strong>AIコンサルティング</strong>
+              <span>戦略立案から実装まで、トータルでサポートいたします。</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section-bottom">
+    <span class="section-label" style="color: var(--color-gold-light);">Contact</span>
+    <h2 style="font-family: var(--font-serif); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 400; margin-bottom: 1rem; letter-spacing: 0.05em;">サービスについてのご相談</h2>
+    <p style="font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 2.5rem;">
+      AIスクールへの参加、AI事業に関するお問い合わせはこちらから。
+    </p>
+    <a href="contact.html" class="btn btn-gold">Contact Us</a>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="images/eiria-logo.png" alt="株式会社EIRIA">
+      <p>
+        AI教育を中心に、<br>
+        学びと挑戦を通じて、<br>
+        一人ひとりの可能性が広がる<br>
+        社会を目指してまいります。
+      </p>
+    </div>
+    <div class="footer-col">
+      <h4>Sitemap</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="company.html">Company</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Information</h4>
+      <ul>
+        <li><a href="company.html#message">代表挨拶</a></li>
+        <li><a href="privacy.html">プライバシーポリシー</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 EIRIA Inc. All Rights Reserved.
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
