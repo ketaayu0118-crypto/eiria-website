@@ -330,7 +330,7 @@ main {
 .footer-brand img {
   height: 36px;
   margin-bottom: 1.5rem;
-  filter: brightness(0) invert(1);
+  background: var(--color-white); padding: 0.5rem 0.75rem; border-radius: 2px;
 }
 
 .footer-brand p {
