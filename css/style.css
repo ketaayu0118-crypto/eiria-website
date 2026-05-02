@@ -243,6 +243,97 @@ main {
   pointer-events: none;
 }
 
+/* EIRIAくん 共通アニメーション */
+@keyframes floatEiria {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-12px) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-12px) rotate(2deg);
+  }
+}
+
+/* EIRIAくん フローティングボタン(全ページ共通) */
+.eiria-kun-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 90px;
+  height: 90px;
+  z-index: 99;
+  cursor: pointer;
+  animation: floatEiria 4s ease-in-out infinite;
+  transition: transform 0.4s var(--transition);
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.2));
+  text-decoration: none;
+}
+
+.eiria-kun-float:hover {
+  transform: scale(1.15) rotate(-5deg);
+  opacity: 1;
+}
+
+.eiria-kun-float img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.eiria-kun-tooltip {
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--color-indigo);
+  color: var(--color-white);
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  margin-right: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--transition);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.eiria-kun-tooltip::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid var(--color-indigo);
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+}
+
+.eiria-kun-float:hover .eiria-kun-tooltip {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .eiria-kun-float {
+    width: 70px;
+    height: 70px;
+    bottom: 16px;
+    right: 16px;
+  }
+  
+  .eiria-kun-tooltip {
+    display: none;
+  }
+}
+
 .page-hero-inner {
   position: relative;
   z-index: 2;
@@ -330,7 +421,9 @@ main {
 .footer-brand img {
   height: 36px;
   margin-bottom: 1.5rem;
-  background: var(--color-white); padding: 0.5rem 0.75rem; border-radius: 2px;
+  background: var(--color-white);
+  padding: 0.5rem 0.75rem;
+  border-radius: 2px;
 }
 
 .footer-brand p {
