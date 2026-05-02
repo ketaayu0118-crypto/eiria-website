@@ -215,7 +215,7 @@
           </dl>
         </div>
         
-        <form class="contact-form" id="contactForm">
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xvzlgwwn" method="POST"> class="contact-form" id="contactForm">
           <div class="form-group">
             <label class="form-label" for="name">お名前<span class="required">必須</span></label>
             <input type="text" id="name" name="name" class="form-input" required>
@@ -287,11 +287,6 @@
 </footer>
 
 <script src="js/main.js"></script>
-<script>
-  document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('お問い合わせいただきありがとうございます。\n\n※現在このフォームはデモ用です。\n実際の送信機能は外部サービス(Formspree等)との連携が必要です。');
-  });
-</script>
+
 </body>
 </html>
