@@ -1,3 +1,15 @@
+// Google Analytics
+(function() {
+  var script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=G-TC70BFG3ND';
+  document.head.appendChild(script);
+  
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TC70BFG3ND');
+})();
 // ============================================
 // 株式会社EIRIA ウェブサイト 共通スクリプト
 // ============================================
