@@ -2,7 +2,6 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="google-site-verification" content="6sI3y0AbCGE809boKg-pbfC9tGhT839_GTPbYbypLKM" /> 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="株式会社EIRIAは、AIスクール『はじめてのAIスクール 彩成』を中心に、AI教育を通じて誰もが新しい可能性に触れられる場を創ります。">
 <title>株式会社EIRIA | 自分を認識し、自分の力で未来を切り開く</title>
@@ -59,6 +58,53 @@
     width: 100%;
     position: relative;
     z-index: 2;
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+  
+  .hero-text {
+    position: relative;
+    z-index: 3;
+  }
+  
+  /* EIRIAくん - ヒーローセクション */
+  .eiria-kun-hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+  }
+  
+  .eiria-kun-hero img {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    animation: floatEiria 4s ease-in-out infinite;
+    transition: transform 0.4s var(--transition);
+    cursor: pointer;
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.25));
+  }
+  
+  .eiria-kun-hero img:hover {
+    transform: scale(1.08) rotate(-3deg);
+  }
+  
+  @keyframes floatEiria {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-15px) rotate(-2deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(0deg);
+    }
+    75% {
+      transform: translateY(-15px) rotate(2deg);
+    }
   }
   
   .hero-line {
@@ -163,15 +209,17 @@
   }
   
   .about-visual img {
-    width: 60%;
-    max-width: 280px;
-    background: var(--color-white); padding: 1rem 1.5rem; border-radius: 4px;
+    width: 50%;
+    max-width: 240px;
+    background: var(--color-white);
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
     position: relative;
     z-index: 2;
   }
   
   .about-visual::after {
-    content: "EST. 2025";
+    content: "EST. 2026";
     position: absolute;
     bottom: 2.5rem;
     left: 0;
@@ -363,6 +411,20 @@
       align-items: stretch;
     }
     
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .eiria-kun-hero {
+      order: -1;
+      margin-bottom: 1rem;
+    }
+    
+    .eiria-kun-hero img {
+      max-width: 220px;
+    }
+    
     .hero-cta .btn {
       width: 100%;
     }
@@ -399,20 +461,25 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-line"></div>
-      <p class="hero-tagline">Recognize Yourself, Create Your Future</p>
-      <h1 class="hero-title">
-        自分を認識し、<br>
-        自分の力で<span class="accent">未来</span>を切り開く。
-      </h1>
-      <p class="hero-desc">
-        株式会社EIRIAは、AI教育を中心とした学びの場を通じて、
-        年齢や経験に関わらず、誰もが新しい可能性に触れられる環境を創ります。
-        学びと挑戦を通じて、一人ひとりの未来を広げていきます。
-      </p>
-      <div class="hero-cta">
-        <a href="services.html" class="btn btn-light">事業内容を見る</a>
-        <a href="contact.html" class="btn btn-gold">お問い合わせ</a>
+      <div class="hero-text">
+        <div class="hero-line"></div>
+        <p class="hero-tagline">Recognize Yourself, Create Your Future</p>
+        <h1 class="hero-title">
+          自分を認識し、<br>
+          自分の力で<span class="accent">未来</span>を切り開く。
+        </h1>
+        <p class="hero-desc">
+          株式会社EIRIAは、AI教育を中心とした学びの場を通じて、
+          年齢や経験に関わらず、誰もが新しい可能性に触れられる環境を創ります。
+          学びと挑戦を通じて、一人ひとりの未来を広げていきます。
+        </p>
+        <div class="hero-cta">
+          <a href="services.html" class="btn btn-light">事業内容を見る</a>
+          <a href="contact.html" class="btn btn-gold">お問い合わせ</a>
+        </div>
+      </div>
+      <div class="eiria-kun-hero" aria-hidden="true">
+        <img src="images/eiria-kun.png" alt="EIRIAくん - 株式会社EIRIAマスコット">
       </div>
     </div>
   </section>
@@ -510,6 +577,12 @@
     </div>
   </section>
 </main>
+
+<!-- EIRIAくん フローティング -->
+<a href="contact.html" class="eiria-kun-float" aria-label="お問い合わせ">
+  <span class="eiria-kun-tooltip">お問い合わせはこちら!</span>
+  <img src="images/eiria-kun.png" alt="EIRIAくん">
+</a>
 
 <footer class="site-footer">
   <div class="footer-inner">

@@ -145,6 +145,67 @@
     border-bottom: 1px solid var(--color-gold-deep);
   }
   
+  /* EIRIAくん - お問い合わせページ */
+  .eiria-kun-contact {
+    margin-top: 2.5rem;
+    text-align: center;
+    position: relative;
+  }
+  
+  .eiria-kun-contact img {
+    width: 180px;
+    height: auto;
+    animation: floatEiria 4s ease-in-out infinite;
+    transition: transform 0.4s var(--transition);
+    cursor: pointer;
+  }
+  
+  .eiria-kun-contact img:hover {
+    transform: scale(1.1) rotate(-3deg);
+  }
+  
+  .eiria-kun-balloon {
+    display: inline-block;
+    background: var(--color-gold);
+    color: var(--color-white);
+    padding: 0.75rem 1.5rem;
+    border-radius: 24px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    position: relative;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 12px rgba(201, 169, 106, 0.3);
+  }
+  
+  .eiria-kun-balloon::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--color-gold);
+  }
+  
+  @keyframes floatEiria {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-10px) rotate(-2deg);
+    }
+    50% {
+      transform: translateY(-7px) rotate(0deg);
+    }
+    75% {
+      transform: translateY(-10px) rotate(2deg);
+    }
+  }
+  
   @media (max-width: 768px) {
     .contact-grid {
       grid-template-columns: 1fr;
@@ -153,6 +214,10 @@
     
     .contact-form {
       padding: 2rem 1.5rem;
+    }
+    
+    .eiria-kun-contact img {
+      width: 140px;
     }
   }
 </style>
@@ -213,9 +278,16 @@
             <dt>BUSINESS HOURS</dt>
             <dd>平日 10:00 - 18:00<br>(土日祝を除く)</dd>
           </dl>
+          
+          <!-- EIRIAくん -->
+          <div class="eiria-kun-contact" aria-hidden="true">
+            <div class="eiria-kun-balloon">お気軽にどうぞ!</div>
+            <br>
+            <img src="images/eiria-kun.png" alt="EIRIAくん">
+          </div>
         </div>
         
-        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xvzlgwwn" method="POST">
+        <form class="contact-form" id="contactForm">
           <div class="form-group">
             <label class="form-label" for="name">お名前<span class="required">必須</span></label>
             <input type="text" id="name" name="name" class="form-input" required>
@@ -287,6 +359,11 @@
 </footer>
 
 <script src="js/main.js"></script>
-
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('お問い合わせいただきありがとうございます。\n\n※現在このフォームはデモ用です。\n実際の送信機能は外部サービス(Formspree等)との連携が必要です。');
+  });
+</script>
 </body>
 </html>
