@@ -133,34 +133,17 @@
   }
   
   .greeting-eiria-kun {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    width: 200px;
+    width: 75%;
+    max-width: 280px;
     height: auto;
     z-index: 3;
-    animation: floatEiriaGreeting 4s ease-in-out infinite;
-    transition: transform 0.3s var(--transition);
-    cursor: pointer;
+    position: relative;
+    transition: transform 0.6s var(--transition);
   }
   
   .greeting-eiria-kun:hover {
-    transform: scale(1.1) rotate(-3deg);
-  }
-  
-  @keyframes floatEiriaGreeting {
-    0%, 100% {
-      transform: translateY(0) rotate(0deg);
-    }
-    25% {
-      transform: translateY(-10px) rotate(-2deg);
-    }
-    50% {
-      transform: translateY(-5px) rotate(0deg);
-    }
-    75% {
-      transform: translateY(-10px) rotate(2deg);
-    }
+    transform: scale(1.03);
+    cursor: default;
   }
   
   .greeting-text p {
@@ -357,8 +340,7 @@
     </div>
     <div class="greeting-grid">
       <div class="greeting-visual" aria-hidden="true">
-        <span class="visual-name">A.K.</span>
-        <img src="images/eiria-kun-welcome.png" alt="EIRIAくん歓迎ポーズ" class="greeting-eiria-kun">
+        <img src="images/eiria-kun-thinking.png" alt="EIRIAくん考えるシルエット" class="greeting-eiria-kun">
       </div>
       <div class="greeting-text">
         <p class="lead">

@@ -162,32 +162,16 @@
   }
   
   .about-visual img {
-    width: 70%;
-    max-width: 320px;
+    width: 75%;
+    max-width: 360px;
     position: relative;
     z-index: 2;
-    animation: floatEiriaAbout 5s ease-in-out infinite;
-    transition: transform 0.3s var(--transition);
+    transition: transform 0.6s var(--transition);
   }
   
   .about-visual img.about-eiria-kun:hover {
-    transform: scale(1.05) rotate(-3deg);
-    cursor: pointer;
-  }
-  
-  @keyframes floatEiriaAbout {
-    0%, 100% {
-      transform: translateY(0) rotate(0deg);
-    }
-    25% {
-      transform: translateY(-10px) rotate(-1deg);
-    }
-    50% {
-      transform: translateY(-5px) rotate(0deg);
-    }
-    75% {
-      transform: translateY(-10px) rotate(1deg);
-    }
+    transform: scale(1.03);
+    cursor: default;
   }
   
   .about-visual::after {
@@ -473,7 +457,7 @@
     <div class="section-inner">
       <div class="about-grid">
         <div class="about-visual" aria-hidden="true">
-          <img src="images/eiria-kun-welcome.png" alt="EIRIAくん歓迎ポーズ" class="about-eiria-kun">
+          <img src="images/eiria-kun-thinking.png" alt="EIRIAくん考えるシルエット" class="about-eiria-kun">
         </div>
         <div class="about-text">
           <span class="section-label">About</span>
