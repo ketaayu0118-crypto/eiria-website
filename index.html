@@ -162,13 +162,32 @@
   }
   
   .about-visual img {
-    width: 50%;
-    max-width: 240px;
-    background: var(--color-white);
-    padding: 1rem 1.5rem;
-    border-radius: 4px;
+    width: 70%;
+    max-width: 320px;
     position: relative;
     z-index: 2;
+    animation: floatEiriaAbout 5s ease-in-out infinite;
+    transition: transform 0.3s var(--transition);
+  }
+  
+  .about-visual img.about-eiria-kun:hover {
+    transform: scale(1.05) rotate(-3deg);
+    cursor: pointer;
+  }
+  
+  @keyframes floatEiriaAbout {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-10px) rotate(-1deg);
+    }
+    50% {
+      transform: translateY(-5px) rotate(0deg);
+    }
+    75% {
+      transform: translateY(-10px) rotate(1deg);
+    }
   }
   
   .about-visual::after {
@@ -332,6 +351,37 @@
     z-index: 2;
   }
   
+  .cta-eiria-kun {
+    margin-bottom: 2rem;
+  }
+  
+  .cta-eiria-kun img {
+    width: 180px;
+    height: auto;
+    animation: floatEiriaCTA 4s ease-in-out infinite;
+    transition: transform 0.3s var(--transition);
+  }
+  
+  .cta-eiria-kun img:hover {
+    transform: scale(1.1) rotate(-5deg);
+    cursor: pointer;
+  }
+  
+  @keyframes floatEiriaCTA {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-12px) rotate(-2deg);
+    }
+    50% {
+      transform: translateY(-8px) rotate(0deg);
+    }
+    75% {
+      transform: translateY(-12px) rotate(2deg);
+    }
+  }
+  
   .cta-title {
     font-family: var(--font-serif);
     font-size: clamp(1.75rem, 3vw, 2.5rem);
@@ -423,7 +473,7 @@
     <div class="section-inner">
       <div class="about-grid">
         <div class="about-visual" aria-hidden="true">
-          <img src="images/eiria-logo.png" alt="">
+          <img src="images/eiria-kun-welcome.png" alt="EIRIAくん歓迎ポーズ" class="about-eiria-kun">
         </div>
         <div class="about-text">
           <span class="section-label">About</span>
@@ -502,6 +552,9 @@
   <!-- CTA Section -->
   <section class="cta-section">
     <div class="cta-inner">
+      <div class="cta-eiria-kun">
+        <img src="images/eiria-kun-ok.png" alt="EIRIAくんOKポーズ">
+      </div>
       <h2 class="cta-title">お気軽にお問い合わせください</h2>
       <p class="cta-desc">
         AIスクール「彩成」へのご質問、AI事業に関するご相談など、
@@ -515,7 +568,7 @@
 <!-- EIRIAくん フローティング -->
 <a href="contact.html" class="eiria-kun-float" aria-label="お問い合わせ">
   <span class="eiria-kun-tooltip">お問い合わせはこちら!</span>
-  <img src="images/eiria-kun.png" alt="EIRIAくん">
+  <img src="images/eiria-kun-wave.png" alt="EIRIAくん">
 </a>
 
 <footer class="site-footer">

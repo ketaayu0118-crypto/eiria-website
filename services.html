@@ -81,6 +81,37 @@
     z-index: 2;
   }
   
+  .service-eiria-kun {
+    position: absolute;
+    bottom: 4rem;
+    right: 1rem;
+    width: 140px;
+    height: auto;
+    z-index: 3;
+    animation: floatEiriaService 4s ease-in-out infinite;
+    transition: transform 0.3s var(--transition);
+    cursor: pointer;
+  }
+  
+  .service-eiria-kun:hover {
+    transform: scale(1.15) rotate(-5deg);
+  }
+  
+  @keyframes floatEiriaService {
+    0%, 100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-8px) rotate(-2deg);
+    }
+    50% {
+      transform: translateY(-4px) rotate(0deg);
+    }
+    75% {
+      transform: translateY(-8px) rotate(2deg);
+    }
+  }
+  
   .service-no {
     font-family: var(--font-display);
     font-size: 0.85rem;
@@ -242,6 +273,7 @@
       <div class="service-detail-visual">
         <span class="visual-text">彩</span>
         <span class="visual-label">SAISEI AI SCHOOL</span>
+        <img src="images/eiria-kun-book.png" alt="EIRIAくん本を持つ" class="service-eiria-kun">
       </div>
       <div>
         <p class="service-no">SERVICE 01</p>
@@ -289,6 +321,7 @@
       <div class="service-detail-visual alt">
         <span class="visual-text">AI</span>
         <span class="visual-label">AI BUSINESS SOLUTIONS</span>
+        <img src="images/eiria-kun-ok.png" alt="EIRIAくんOKポーズ" class="service-eiria-kun">
       </div>
       <div>
         <p class="service-no">SERVICE 02</p>
@@ -346,7 +379,7 @@
 <!-- EIRIAくん フローティング -->
 <a href="contact.html" class="eiria-kun-float" aria-label="お問い合わせ">
   <span class="eiria-kun-tooltip">お問い合わせはこちら!</span>
-  <img src="images/eiria-kun.png" alt="EIRIAくん">
+  <img src="images/eiria-kun-wave.png" alt="EIRIAくん">
 </a>
 
 <footer class="site-footer">
