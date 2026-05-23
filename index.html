@@ -1,640 +1,741 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="株式会社EIRIAは、AIスクール『はじめてのAIスクール 彩成』を中心に、AI教育を通じて誰もが新しい可能性に触れられる場を創ります。">
-<title>株式会社EIRIA | 自分を認識し、自分の力で未来を切り開く</title>
-<link rel="icon" type="image/png" href="images/eiria-logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
-<style>
-  /* ============================================
-     トップページ専用スタイル
-     ============================================ */
-  .hero {
-    min-height: calc(100vh - 80px);
-    display: flex;
-    align-items: center;
-    padding: 4rem 2rem;
-    position: relative;
-    overflow: hidden;
-    background: var(--color-indigo);
-    color: var(--color-white);
-  }
-  
-  .hero::before {
-    content: "";
-    position: absolute;
-    top: -30%;
-    right: -15%;
-    width: 700px;
-    height: 700px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(201, 169, 106, 0.18) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  
-  .hero::after {
-    content: "EIRIA";
-    position: absolute;
-    bottom: -2rem;
-    right: -1rem;
-    font-family: var(--font-display);
-    font-size: clamp(8rem, 18vw, 18rem);
-    font-weight: 300;
-    color: rgba(255, 255, 255, 0.04);
-    letter-spacing: 0.1em;
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-  }
-  
-  .hero-inner {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    width: 100%;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .hero-line {
-    width: 60px;
-    height: 1px;
-    background: var(--color-gold);
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: lineExpand 1s var(--transition) 0.2s forwards;
-  }
-  
-  @keyframes lineExpand {
-    from { opacity: 0; width: 0; }
-    to { opacity: 1; width: 60px; }
-  }
-  
-  .hero-tagline {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    letter-spacing: 0.5em;
-    color: var(--color-gold-light);
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 1s var(--transition) 0.5s forwards;
-    text-transform: uppercase;
-  }
-  
-  .hero-title {
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 5vw, 3.75rem);
-    font-weight: 400;
-    line-height: 1.5;
-    letter-spacing: 0.05em;
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 1s var(--transition) 0.8s forwards;
-    color: var(--color-white);
-  }
-  
-  .hero-title .accent {
-    color: var(--color-gold-light);
-  }
-  
-  .hero-desc {
-    font-size: 1rem;
-    line-height: 2.2;
-    max-width: 540px;
-    color: rgba(255, 255, 255, 0.75);
-    margin-bottom: 3rem;
-    opacity: 0;
-    animation: fadeUp 1s var(--transition) 1.1s forwards;
-  }
-  
-  .hero-cta {
-    display: flex;
-    gap: 1.25rem;
-    opacity: 0;
-    animation: fadeUp 1s var(--transition) 1.4s forwards;
-    flex-wrap: wrap;
-  }
-  
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  /* About セクション */
-  .about {
-    background: var(--color-white);
-  }
-  
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.3fr;
-    gap: 5rem;
-    align-items: center;
-  }
-  
-  .about-text p {
-    font-size: 1rem;
-    line-height: 2.2;
-    margin-bottom: 1.5rem;
-    color: var(--color-text-sub);
-  }
-  
-  .about-visual {
-    aspect-ratio: 4 / 5;
-    background: var(--color-indigo);
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .about-visual::before {
-    content: "";
-    position: absolute;
-    inset: 1.5rem;
-    border: 1px solid rgba(201, 169, 106, 0.4);
-    pointer-events: none;
-  }
-  
-  .about-visual img {
-    width: 75%;
-    max-width: 360px;
-    position: relative;
-    z-index: 2;
-    transition: transform 0.6s var(--transition);
-  }
-  
-  .about-visual img.about-eiria-kun:hover {
-    transform: scale(1.03);
-    cursor: default;
-  }
-  
-  .about-visual::after {
-    content: "EST. 2026";
-    position: absolute;
-    bottom: 2.5rem;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-family: var(--font-display);
-    font-size: 0.75rem;
-    letter-spacing: 0.5em;
-    color: var(--color-gold-light);
-    z-index: 2;
-  }
-  
-  /* Services セクション */
-  .services {
-    background: var(--color-bg-alt);
-    position: relative;
-  }
-  
-  .services-header {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-  
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-  
-  .service-card {
-    background: var(--color-white);
-    padding: 3rem 2.5rem;
-    position: relative;
-    transition: transform 0.4s var(--transition), box-shadow 0.4s var(--transition);
-    border: 1px solid var(--color-line);
-    overflow: hidden;
-  }
-  
-  .service-card::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--color-gold);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s var(--transition);
-  }
-  
-  .service-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 50px rgba(26, 37, 71, 0.08);
-  }
-  
-  .service-card:hover::before {
-    transform: scaleX(1);
-  }
-  
-  .service-number {
-    font-family: var(--font-display);
-    font-size: 0.85rem;
-    color: var(--color-gold-deep);
-    letter-spacing: 0.4em;
-    margin-bottom: 1.5rem;
-  }
-  
-  .service-title {
-    font-family: var(--font-serif);
-    font-size: 1.4rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    line-height: 1.5;
-    color: var(--color-indigo);
-  }
-  
-  .service-title-en {
-    font-family: var(--font-display);
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
-    letter-spacing: 0.25em;
-    margin-bottom: 1.5rem;
-  }
-  
-  .service-desc {
-    font-size: 0.95rem;
-    line-height: 1.95;
-    color: var(--color-text-sub);
-  }
-  
-  /* 彩成サイトへのリンクボタン */
-  .service-title-link {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.3s var(--transition);
-  }
-  
-  .service-title-link:hover {
-    color: var(--color-gold);
-  }
-  
-  .service-link-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-top: 1.75rem;
-    padding: 0.75rem 1.5rem;
-    border: 1px solid var(--color-gold);
-    color: var(--color-gold);
-    font-family: var(--font-display);
-    font-size: 0.85rem;
-    letter-spacing: 0.15em;
-    text-decoration: none;
-    transition: all 0.4s var(--transition);
-    background: transparent;
-  }
-  
-  .service-link-btn:hover {
-    background: var(--color-gold);
-    color: var(--color-white);
-  }
-  
-  .service-link-arrow {
-    transition: transform 0.3s var(--transition);
-  }
-  
-  .service-link-btn:hover .service-link-arrow {
-    transform: translateX(4px);
-  }
-  
-  .services-footer {
-    text-align: center;
-    margin-top: 3.5rem;
-  }
-  
-  /* Message セクション(代表挨拶のティザー) */
-  .message-teaser {
-    background: var(--color-white);
-    padding: 6rem 2rem;
-  }
-  
-  .message-teaser-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  
-  .message-quote-mark {
-    font-family: var(--font-display);
-    font-size: 5rem;
-    color: var(--color-gold);
-    line-height: 1;
-    margin-bottom: 1rem;
-  }
-  
-  .message-quote {
-    font-family: var(--font-serif);
-    font-size: clamp(1.2rem, 2.5vw, 1.75rem);
-    line-height: 1.9;
-    color: var(--color-indigo);
-    margin-bottom: 2rem;
-    letter-spacing: 0.05em;
-  }
-  
-  .message-quote .accent {
-    color: var(--color-gold-deep);
-  }
-  
-  .message-attribution {
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
-    letter-spacing: 0.2em;
-    margin-bottom: 2.5rem;
-  }
-  
-  /* CTA セクション */
-  .cta-section {
-    background: var(--color-indigo);
-    color: var(--color-white);
-    text-align: center;
-    padding: 6rem 2rem;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .cta-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 30% 50%, rgba(201, 169, 106, 0.1) 0%, transparent 50%);
-    pointer-events: none;
-  }
-  
-  .cta-inner {
-    position: relative;
-    z-index: 2;
-  }
-  
-  .cta-eiria-kun {
-    margin-bottom: 2rem;
-  }
-  
-  .cta-eiria-kun img {
-    width: 180px;
-    height: auto;
-    animation: floatEiriaCTA 4s ease-in-out infinite;
-    transition: transform 0.3s var(--transition);
-  }
-  
-  .cta-eiria-kun img:hover {
-    transform: scale(1.1) rotate(-5deg);
-    cursor: pointer;
-  }
-  
-  @keyframes floatEiriaCTA {
-    0%, 100% {
-      transform: translateY(0) rotate(0deg);
-    }
-    25% {
-      transform: translateY(-12px) rotate(-2deg);
-    }
-    50% {
-      transform: translateY(-8px) rotate(0deg);
-    }
-    75% {
-      transform: translateY(-12px) rotate(2deg);
-    }
-  }
-  
-  .cta-title {
-    font-family: var(--font-serif);
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    font-weight: 400;
-    margin-bottom: 1rem;
-    letter-spacing: 0.05em;
-  }
-  
-  .cta-desc {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 2.5rem;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  @media (max-width: 768px) {
-    .about-grid {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-    
-    .services-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .hero-cta {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    
-    .hero-cta .btn {
-      width: 100%;
-    }
-  }
-</style>
-</head>
-<body>
-
-<header class="site-header">
-  <div class="header-inner">
-    <div class="logo">
-      <a href="index.html">
-        <img src="images/eiria-logo.png" alt="株式会社EIRIA">
-        <span class="logo-jp-sub">株式会社</span>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>株式会社EIRIA | AI教育・AI活用支援・制作運用</title>
+    <meta
+      name="description"
+      content="株式会社EIRIAは、AI教育、AI活用支援、Web・SNS・資料制作を通じて、一人ひとりの学びと挑戦を実務につなげる会社です。"
+    >
+    <link rel="icon" type="image/png" href="assets/eiria-logo.png">
+    <link rel="preload" as="image" href="assets/eiria-cyberverse-hero.png">
+    <link rel="preload" as="image" href="assets/eiria-story-portal.png">
+    <link rel="preload" as="image" href="assets/eiria-support-cockpit.png">
+    <link rel="stylesheet" href="styles.css?v=13">
+  </head>
+  <body>
+    <header class="site-header" aria-label="サイトヘッダー">
+      <a class="brand" href="#top" aria-label="株式会社EIRIA トップへ">
+        <img src="assets/eiria-logo.png" alt="" class="brand-logo">
+        <span class="brand-text">
+          <span class="brand-name">株式会社EIRIA</span>
+          <span class="brand-sub">AI Education & Creative Works</span>
+        </span>
       </a>
-    </div>
-    <nav>
-      <ul class="nav-list" id="navList">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="company.html">Company</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="メニュー">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
-</header>
-
-<main>
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-line"></div>
-      <p class="hero-tagline">Recognize Yourself, Create Your Future</p>
-      <h1 class="hero-title">
-        自分を認識し、<br>
-        自分の力で<span class="accent">未来</span>を切り開く。
-      </h1>
-      <p class="hero-desc">
-        株式会社EIRIAは、AI教育を中心とした学びの場を通じて、
-        年齢や経験に関わらず、誰もが新しい可能性に触れられる環境を創ります。
-        学びと挑戦を通じて、一人ひとりの未来を広げていきます。
-      </p>
-      <div class="hero-cta">
-        <a href="services.html" class="btn btn-light">事業内容を見る</a>
-        <a href="contact.html" class="btn btn-gold">お問い合わせ</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="メニューを開閉する">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="メインナビゲーション">
+        <a href="#concept">EIRIAについて</a>
+        <a href="#story">創業ストーリー</a>
+        <a href="#services">事業内容</a>
+        <a href="#message">代表挨拶</a>
+        <a href="#company">会社情報</a>
+        <a href="#sai">彩成紹介</a>
+      </nav>
+      <div class="language-switch" aria-label="表示言語">
+        <button type="button" class="is-active" data-lang="ja" aria-pressed="true">JP</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
       </div>
-    </div>
-  </section>
+      <a class="header-cta" href="#contact">相談する</a>
+    </header>
 
-  <!-- About Section -->
-  <section class="section about">
-    <div class="section-inner">
-      <div class="about-grid">
-        <div class="about-visual" aria-hidden="true">
-          <img src="images/eiria-kun-thinking.png" alt="EIRIAくん考えるシルエット" class="about-eiria-kun">
+    <main id="top">
+      <div class="code-atmosphere" aria-hidden="true">
+        <span>const future = choose(self);</span>
+        <span>AI.connect(learn, create, operate);</span>
+        <span>while (learning) { choices.expand(); }</span>
+        <span>function recognizeSelf() { return agency; }</span>
+        <span>deploy: web / sns / document / ai</span>
+      </div>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="space-particles" aria-hidden="true"></div>
+        <div class="hero-grid-floor" aria-hidden="true"></div>
+        <div class="hero-copy">
+          <p class="eyebrow">The Story of EIRIA</p>
+          <h1 id="hero-title"><span>株式会社</span><span>EIRIA</span></h1>
+          <p class="hero-statement">AI教育と制作運用で、学びを実務につなげる。</p>
+          <p class="hero-lead">
+            EIRIAは、AI教育、AI活用支援、Web・SNS・資料制作を通じて、
+            一人ひとりが自分の力で未来を選び、行動できる環境をつくる会社です。
+          </p>
+          <div class="hero-actions" aria-label="主要アクション">
+            <a class="button primary" href="#contact">事業について相談する</a>
+            <a class="button secondary" href="https://saisei-school.com/" target="_blank" rel="noopener">彩成サイトを見る</a>
+          </div>
+          <div class="hero-points" aria-label="EIRIAの提供価値">
+            <span>AI教育事業</span>
+            <span>AI活用支援</span>
+            <span>制作運用支援</span>
+          </div>
         </div>
-        <div class="about-text">
-          <span class="section-label">About</span>
-          <h2 class="section-title-en">EIRIA</h2>
-          <h3 class="section-title" style="margin-bottom: 2rem;">学びを通じて、可能性をひらく。</h3>
+        <div class="hero-visual" aria-label="AI教育と制作運用の仮想空間イメージ">
+          <img src="assets/eiria-cyberverse-hero.png" alt="AI教育と制作運用を表す仮想空間">
+          <div class="hero-card">
+            <strong>Virtual AI Studio</strong>
+            <span>学び、制作、運用をひとつのデジタル空間で接続する。</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="value-strip" aria-label="EIRIAの領域">
+        <div>
+          <span>01</span>
+          <strong>AI Education</strong>
+          <p>学びたい人に、使えるAIを届ける。</p>
+        </div>
+        <div>
+          <span>02</span>
+          <strong>Creative Works</strong>
+          <p>発信や資料づくりを、続く運用へ整える。</p>
+        </div>
+        <div>
+          <span>03</span>
+          <strong>Community</strong>
+          <p>人が挑戦しやすい場と関係性をつくる。</p>
+        </div>
+      </section>
+
+      <section class="section virtual-section" aria-labelledby="virtual-title">
+        <div class="virtual-copy">
+          <p class="eyebrow">AI Virtual Space</p>
+          <h2 id="virtual-title">学び、制作、運用が交差する仮想空間へ。</h2>
           <p>
-            「EIRIA(エイリア)」という名前には、
-            「自分を認識し、自分の力で未来を切り開く」という想いを込めています。
+            EIRIAは、AIをただ学ぶだけの場所ではありません。知識、表現、仕事、コミュニティが接続され、
+            一人ひとりの可能性が次の行動へ変わっていく場を設計します。
+          </p>
+          <div class="virtual-tags" aria-label="EIRIAの接続領域">
+            <span>Learn</span>
+            <span>Create</span>
+            <span>Connect</span>
+            <span>Operate</span>
+          </div>
+        </div>
+        <div class="virtual-stage" aria-label="EIRIAがつくるAI活用空間のイメージ">
+          <img src="assets/eiria-virtual-portal.png" alt="AI活用の仮想空間を表すデジタルポータル">
+          <div class="virtual-photo">
+            <img src="assets/eiria-cyberverse-hero.png" alt="AI活用の仮想空間">
+          </div>
+          <div class="virtual-console" aria-hidden="true">
+            <span>system: EIRIA</span>
+            <span>learn -> create -> operate</span>
+            <span>status: online</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section concept" id="concept" aria-labelledby="concept-title">
+        <div class="section-kicker">
+          <p class="eyebrow">About EIRIA</p>
+          <h2 id="concept-title">「私は私である」と言える時代をつくる。</h2>
+        </div>
+        <div class="concept-body">
+          <p>
+            AIは、特別な人だけの道具ではありません。文章を整える、情報を整理する、資料をつくる、
+            仕事の段取りを考える。日常と仕事のすぐそばで、選択肢を増やしてくれる実用的な力です。
           </p>
           <p>
-            AIをはじめとするテクノロジーの進化により、
-            私たちの働き方や学び方の選択肢は大きく広がっています。
-            一方で、「難しそう」「自分には関係ない」と感じてしまい、
-            新しい可能性に触れる機会を持てていない方も多くいらっしゃいます。
+            EIRIAは、その力を「学んで終わり」にしません。安心して学べる場、相談できる関係性、
+            実務につながる制作・運用の仕組みまで設計し、一人ひとりが自分の可能性を形にできる状態を目指します。
+          </p>
+          <div class="name-note">
+            <p class="eyebrow">Meaning</p>
+            <p>
+              EIRIAという名前には、I（私）という文字が二つ含まれています。
+              ひとつ目は「私はここにいる」という自己認識。
+              二つ目は「私は選び、行動する」という主体性です。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section story-section" id="story" aria-labelledby="story-title">
+        <div class="story-heading">
+          <p class="eyebrow">The Story of EIRIA</p>
+          <h2 id="story-title">創業ストーリー</h2>
+          <p>誰かの期待ではなく、自分の意志で未来を選ぶために。</p>
+        </div>
+        <div class="story-layout">
+          <div class="story-image story-portal" aria-label="EIRIAという名前に込めた意味">
+            <img src="assets/eiria-story-portal.png" alt="自己認識と主体性を表す二つの光の柱がある仮想空間">
+            <div class="story-anchor-card">
+              <p class="eyebrow">Double I</p>
+              <div class="ii-mark" aria-hidden="true">
+                <span>I</span>
+                <span>I</span>
+              </div>
+              <h3>自己認識と主体性</h3>
+              <p>
+                EIRIAに含まれる二つのIは、「私はここにいる」という認識と、
+                「私は選び、行動する」という意志を表しています。
+              </p>
+            </div>
+          </div>
+          <div class="story-copy">
+            <p>
+              多くの人が、気づかないうちに「誰かの期待」に合わせて生きています。
+              家庭、社会、役割、周囲の評価。特に女性は、長い間「こうあるべき」という
+              見えない枠の中で生きることを求められてきました。
+            </p>
+            <p>
+              本当は、自分の人生を自分で選びたい。本当は、自分の力で未来を切り拓きたい。
+              けれど、いつの間にか「それは難しい」「私には無理かもしれない」と
+              自分自身を小さくしてしまう。
+            </p>
+            <p>
+              EIRIAは、そんな社会の空気に疑問を持ったことから生まれました。
+              人は、本来もっと自由に生きていい。自分を認識し、自分の意志で選び、
+              自分の力で未来を創ることができる。
+            </p>
+            <div class="i-grid" aria-label="EIRIAに含まれる2つのI">
+              <article>
+                <span>First I</span>
+                <h3>自己認識</h3>
+                <p>「私はここにいる」と、自分の存在と可能性を認識すること。</p>
+              </article>
+              <article>
+                <span>Second I</span>
+                <h3>主体性</h3>
+                <p>「私は選び、行動する」と、自分の人生を自分で創ること。</p>
+              </article>
+            </div>
+            <p>
+              EIRIAは、誰かの人生を生きるのではなく、自分の人生を自分で創る人が
+              増えていく時代を象徴する名前です。
+            </p>
+            <p>
+              私たちは信じています。女性が自分を認識し、自分の力で未来を選び始めたとき、
+              社会は静かに、しかし確実に変わっていく。
+            </p>
+            <blockquote>
+              EIRIAは、「私は私である」と言える時代をつくるために生まれました。
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <section class="section services" id="services" aria-labelledby="services-title">
+        <div class="section-heading">
+          <p class="eyebrow">Services</p>
+          <h2 id="services-title">事業内容</h2>
+          <p>EIRIAは、スクール運営と企業向け制作運用支援を分けず、学びを実務へ接続します。</p>
+        </div>
+        <div class="service-grid">
+          <article class="service-card" id="sai">
+            <div class="service-number">Service 01</div>
+            <div class="service-media">
+              <img src="assets/eiria-story-portal.png" alt="自分の可能性へ進む学びの仮想空間">
+            </div>
+            <div class="service-illustration" aria-hidden="true">
+              <svg viewBox="0 0 96 96" role="img">
+                <rect x="18" y="20" width="42" height="56" rx="5"></rect>
+                <path d="M60 27h12a6 6 0 0 1 6 6v43H60z"></path>
+                <path d="M29 36h20M29 48h20M29 60h13"></path>
+                <circle cx="70" cy="43" r="5"></circle>
+                <path d="M70 52v12M64 58h12"></path>
+              </svg>
+            </div>
+            <h3>はじめてのAIスクール彩成</h3>
+            <p>
+              初心者・シニア世代に向けたAI教育事業。AIを日常や仕事で使える力に変えるため、
+              基礎から実践、成果物づくりまで伴走します。
+            </p>
+            <ul>
+              <li>AIの基本操作と質問の仕方</li>
+              <li>文章・資料・画像・Webの実践</li>
+              <li>成果物レビューと品質管理</li>
+            </ul>
+            <a class="text-link" href="https://saisei-school.com/" target="_blank" rel="noopener">彩成のサイトを見る</a>
+          </article>
+          <article class="service-card featured">
+            <div class="service-number">Service 02</div>
+            <div class="service-media">
+              <img src="assets/eiria-support-cockpit.png" alt="Web、SNS、資料、AIを接続する運用支援の仮想空間">
+            </div>
+            <div class="service-illustration" aria-hidden="true">
+              <svg viewBox="0 0 96 96" role="img">
+                <rect x="16" y="22" width="64" height="42" rx="6"></rect>
+                <path d="M34 76h28M48 64v12"></path>
+                <path d="M31 43h13l6-10 7 20 6-10h8"></path>
+                <path d="M72 18l5-8M80 27l9-3M65 14l-3-9"></path>
+              </svg>
+            </div>
+            <h3>企業向けAI制作・運用支援</h3>
+            <p>
+              ホームページ、SNS投稿、営業資料、文章制作など、企業・店舗の発信業務をAI活用前提で整えます。
+              制作して終わりではなく、更新し続けられる状態まで支援します。
+            </p>
+            <ul>
+              <li>Webサイト制作・更新管理</li>
+              <li>SNS投稿補助・運用代行</li>
+              <li>資料作成・文章作成・情報整理</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <div class="service-number">Service 03</div>
+            <div class="service-media">
+              <img src="assets/eiria-cyberverse-hero.png" alt="学びとコミュニティが接続するデジタル空間">
+            </div>
+            <div class="service-illustration" aria-hidden="true">
+              <svg viewBox="0 0 96 96" role="img">
+                <circle cx="48" cy="28" r="11"></circle>
+                <circle cx="24" cy="60" r="10"></circle>
+                <circle cx="72" cy="60" r="10"></circle>
+                <path d="M40 36 30 52M56 36l10 16M34 62h28"></path>
+                <path d="M16 80c3-10 14-15 25-10M55 70c11-5 22 0 25 10"></path>
+              </svg>
+            </div>
+            <h3>コミュニティ連携・説明会設計</h3>
+            <p>
+              地域コミュニティ、学び直しの場、企業・団体と連携し、AI活用・副業・社会参加につながる
+              説明会や講座設計を行います。
+            </p>
+            <ul>
+              <li>情報提供型の説明会</li>
+              <li>ニーズ調査と個別相談導線</li>
+              <li>共同開催・紹介モデルの設計</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section support" id="support" aria-labelledby="support-title">
+        <div class="section-heading compact">
+          <p class="eyebrow">What We Support</p>
+          <h2 id="support-title">企業・店舗の発信業務を、AI活用前提で整えます。</h2>
+        </div>
+        <div class="support-layout">
+          <div class="support-visual" aria-label="AIで発信業務を接続する仮想空間">
+            <img class="support-visual-image" src="assets/eiria-support-cockpit.png" alt="Web、SNS、資料、AI設定をつなぐデジタル運用空間">
+            <svg class="support-map" viewBox="0 0 560 520" role="img" aria-hidden="true">
+              <defs>
+                <linearGradient id="supportGold" x1="0" x2="1" y1="0" y2="1">
+                  <stop offset="0" stop-color="#f6e7bd"></stop>
+                  <stop offset="1" stop-color="#c8a24d"></stop>
+                </linearGradient>
+              </defs>
+              <path class="support-circuit muted" d="M96 120h96l48 48h82l54-54h88"></path>
+              <path class="support-circuit" d="M94 388h94l62-62h84l58 58h78"></path>
+              <path class="support-circuit" d="M118 255h96l38-38h62l38 38h92"></path>
+              <rect class="support-screen" x="184" y="128" width="196" height="228" rx="12"></rect>
+              <rect class="support-chip" x="220" y="166" width="124" height="124" rx="14"></rect>
+              <path class="support-wave" d="M246 244l20-52 22 88 18-45 16 18"></path>
+              <path class="support-pin" d="M246 166v-34M282 166v-34M318 166v-34M246 324v-34M282 324v-34M318 324v-34M220 202h-34M220 246h-34M378 202h-34M378 246h-34"></path>
+              <g class="support-node">
+                <rect x="50" y="82" width="92" height="64" rx="8"></rect>
+                <path d="M72 105h48M72 122h34"></path>
+                <text x="96" y="170">WEB</text>
+              </g>
+              <g class="support-node">
+                <rect x="420" y="76" width="92" height="64" rx="8"></rect>
+                <path d="M445 102h42M445 120h24"></path>
+                <text x="466" y="164">SNS</text>
+              </g>
+              <g class="support-node">
+                <rect x="48" y="354" width="96" height="70" rx="8"></rect>
+                <path d="M76 376h34M76 394h44"></path>
+                <text x="96" y="448">DOC</text>
+              </g>
+              <g class="support-node">
+                <rect x="416" y="344" width="100" height="76" rx="8"></rect>
+                <path d="M466 362v18M466 404v18M444 392h-18M506 392h-18"></path>
+                <rect x="450" y="376" width="32" height="32" rx="5"></rect>
+                <text x="466" y="446">AI</text>
+              </g>
+            </svg>
+            <div class="support-visual-caption">AI Support Cockpit</div>
+          </div>
+          <div class="support-grid">
+            <div>
+              <span class="support-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64" role="img">
+                  <rect x="10" y="14" width="44" height="34" rx="4"></rect>
+                  <path d="M10 24h44M18 19h1M24 19h1M30 19h1M20 34h24M20 41h14"></path>
+                </svg>
+              </span>
+              <strong>Web</strong>
+              <span>ホームページ制作、LP改善、更新管理</span>
+            </div>
+            <div>
+              <span class="support-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64" role="img">
+                  <path d="M16 18h32a5 5 0 0 1 5 5v17a5 5 0 0 1-5 5H29l-12 8v-8h-1a5 5 0 0 1-5-5V23a5 5 0 0 1 5-5z"></path>
+                  <path d="M23 30h18M23 37h12"></path>
+                </svg>
+              </span>
+              <strong>SNS</strong>
+              <span>投稿案、画像案、運用補助、発信計画</span>
+            </div>
+            <div>
+              <span class="support-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64" role="img">
+                  <path d="M18 8h21l9 9v39H18z"></path>
+                  <path d="M39 8v10h9M25 29h16M25 37h16M25 45h10"></path>
+                </svg>
+              </span>
+              <strong>Document</strong>
+              <span>営業資料、説明資料、文章の整理・作成</span>
+            </div>
+            <div>
+              <span class="support-icon" aria-hidden="true">
+                <svg viewBox="0 0 64 64" role="img">
+                  <rect x="20" y="20" width="24" height="24" rx="4"></rect>
+                  <path d="M28 20v-8M36 20v-8M28 52v-8M36 52v-8M20 28h-8M20 36h-8M52 28h-8M52 36h-8"></path>
+                  <path d="M28 34l4-8 4 8M29 34h6"></path>
+                </svg>
+              </span>
+              <strong>AI Setup</strong>
+              <span>業務に合わせたAI活用の型づくり</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section flow" id="flow" aria-labelledby="flow-title">
+        <div class="section-heading">
+          <p class="eyebrow">Process</p>
+          <h2 id="flow-title">EIRIAの支援プロセス</h2>
+        </div>
+        <div class="flow-steps">
+          <article>
+            <div class="flow-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" role="img">
+                <circle cx="28" cy="28" r="14"></circle>
+                <path d="m39 39 11 11M23 28h10M28 23v10"></path>
+              </svg>
+            </div>
+            <span>1</span>
+            <h3>整理</h3>
+            <p>課題、対象者、現状の発信・運用体制を整理します。</p>
+          </article>
+          <article>
+            <div class="flow-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" role="img">
+                <path d="M14 14h36v36H14zM14 26h36M26 14v36"></path>
+                <path d="M32 34h10M32 42h6"></path>
+              </svg>
+            </div>
+            <span>2</span>
+            <h3>設計</h3>
+            <p>講座、制作物、運用導線を目的に合わせて組み立てます。</p>
+          </article>
+          <article>
+            <div class="flow-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" role="img">
+                <path d="M18 46 42 22l8 8-24 24H18z"></path>
+                <path d="m37 27 8 8M18 46v8h8M18 16h18M18 24h12"></path>
+              </svg>
+            </div>
+            <span>3</span>
+            <h3>制作・実施</h3>
+            <p>AI教育、Web・SNS・資料制作を必要な粒度で進めます。</p>
+          </article>
+          <article>
+            <div class="flow-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" role="img">
+                <path d="M14 48h36M20 48V34M32 48V22M44 48V28"></path>
+                <path d="M18 22c8-8 17-9 28-4M46 18l-2-9M46 18l-9 1"></path>
+              </svg>
+            </div>
+            <span>4</span>
+            <h3>運用改善</h3>
+            <p>反応や成果物を確認し、継続しやすい形に整えます。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="message-section" id="message" aria-labelledby="message-title">
+        <div class="message-hologram" aria-hidden="true">
+          <svg viewBox="0 0 1200 760" role="img">
+            <defs>
+              <radialGradient id="messageHoloCore" cx="50%" cy="50%" r="50%">
+                <stop offset="0" stop-color="#f6e7bd" stop-opacity="0.62"></stop>
+                <stop offset="0.42" stop-color="#79d8ff" stop-opacity="0.22"></stop>
+                <stop offset="1" stop-color="#79d8ff" stop-opacity="0"></stop>
+              </radialGradient>
+              <linearGradient id="messageHoloLine" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stop-color="#79d8ff" stop-opacity="0.18"></stop>
+                <stop offset="0.52" stop-color="#f6e7bd" stop-opacity="0.54"></stop>
+                <stop offset="1" stop-color="#79d8ff" stop-opacity="0.18"></stop>
+              </linearGradient>
+              <filter id="messageHoloGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="5" result="blur"></feGaussianBlur>
+                <feMerge>
+                  <feMergeNode in="blur"></feMergeNode>
+                  <feMergeNode in="SourceGraphic"></feMergeNode>
+                </feMerge>
+              </filter>
+            </defs>
+            <ellipse class="holo-orbit" cx="510" cy="390" rx="350" ry="92"></ellipse>
+            <ellipse class="holo-orbit thin" cx="510" cy="390" rx="255" ry="68"></ellipse>
+            <ellipse class="holo-orbit vertical" cx="510" cy="390" rx="118" ry="300"></ellipse>
+            <circle class="holo-core" cx="510" cy="390" r="172"></circle>
+            <path class="holo-wave" d="M130 530c110-88 210-132 302-132 135 0 194 93 332 93 102 0 182-48 288-150"></path>
+            <path class="holo-line" d="M220 278h156l62 62h156l82-82h202"></path>
+            <path class="holo-line dim" d="M168 612h218l86-86h176l68 68h286"></path>
+            <g class="holo-window window-a">
+              <rect x="94" y="142" width="235" height="134" rx="16"></rect>
+              <path d="M128 184h166M128 216h118M128 248h156"></path>
+            </g>
+            <g class="holo-window window-b">
+              <rect x="812" y="120" width="276" height="160" rx="16"></rect>
+              <path d="M850 164h188M850 198h132M850 232h166"></path>
+              <circle cx="1036" cy="200" r="34"></circle>
+            </g>
+            <g class="holo-window window-c">
+              <rect x="758" y="486" width="300" height="150" rx="16"></rect>
+              <path d="M798 530h90M798 562h156M798 594h120"></path>
+              <path d="M954 526l34 60 36-92"></path>
+            </g>
+            <g class="holo-chip" filter="url(#messageHoloGlow)">
+              <rect x="440" y="320" width="140" height="140" rx="22"></rect>
+              <path d="M482 392l24-50 24 100 22-50 18 20"></path>
+              <path d="M464 320v-54M510 320v-54M556 320v-54M464 514v-54M510 514v-54M556 514v-54M440 350h-58M440 430h-58M638 350h-58M638 430h-58"></path>
+            </g>
+            <g class="holo-nodes">
+              <circle cx="218" cy="278" r="9"></circle>
+              <circle cx="438" cy="340" r="9"></circle>
+              <circle cx="676" cy="258" r="9"></circle>
+              <circle cx="764" cy="491" r="9"></circle>
+              <circle cx="1002" cy="594" r="9"></circle>
+            </g>
+          </svg>
+        </div>
+        <div class="message-copy">
+          <p class="eyebrow">Message</p>
+          <h2 id="message-title">代表者挨拶</h2>
+          <p>
+            株式会社EIRIAのホームページをご覧いただき、ありがとうございます。
+            代表取締役の桁山 絢有です。
           </p>
           <p>
-            EIRIAは、年齢や性別、これまでの経験に関わらず、
-            学びたいと願うすべての方に開かれた場所でありたいと考えています。
+            現在、AIをはじめとするテクノロジーの進化により、私たちの働き方や学び方、
+            そして人生の選択肢は大きく広がり始めています。しかし一方で、「難しそう」
+            「自分には関係ない」と感じてしまい、新しい可能性に触れる機会を持てていない人が
+            多いことも感じています。
+          </p>
+          <p>
+            私はこれまで、特別なエリートとしてキャリアを歩んできたわけではありません。
+            むしろ、どこにでもいる一人の社会人として働いてきました。だからこそ、
+            「新しいことを学ぶことで人生の選択肢は広がる」ということを実感しています。
+          </p>
+          <p>
+            株式会社EIRIAは、そうした想いから設立しました。EIRIAという名前には、
+            「自分を認識し、自分の力で未来を切り開く」という意味を込めています。
+          </p>
+          <p>
+            私たちは、AI教育を中心とした学びの場を通じて、誰もが新しい知識やスキルに触れ、
+            自分の可能性を広げていける環境づくりを目指しています。
+          </p>
+          <p>
+            EIRIAは、年齢や性別、これまでの経験に関わらず、学びたいと思うすべての方に
+            開かれた場所でありたいと考えています。その中で、私自身の経験も踏まえながら、
+            女性がより自由に能力を発揮できる環境づくりにも自然な形で貢献していければと願っています。
+          </p>
+          <p>
+            テクノロジーが進化する時代だからこそ、大切なのは「誰が使うか」ではなく、
+            どのように未来をつくっていくかだと私たちは考えています。
+          </p>
+          <p>
+            EIRIAは、学びと挑戦を通じて、一人ひとりの可能性が広がる社会を目指してまいります。
+            今後とも、どうぞよろしくお願い申し上げます。
+          </p>
+          <p class="signature">
+            株式会社EIRIA<br>
+            代表取締役　桁山 絢有
           </p>
         </div>
-      </div>
-    </div>
-  </section>
+        <aside class="message-visual" aria-label="EIRIAくん">
+          <img src="assets/eiria-kun-thinking-cutout-crop.png?v=2" alt="考えるポーズのEIRIAくん">
+        </aside>
+      </section>
 
-  <!-- Services Section -->
-  <section class="section services">
-    <div class="section-inner">
-      <div class="services-header">
-        <span class="section-label">Services</span>
-        <h2 class="section-title-en">Our Business</h2>
-        <h3 class="section-title">事業内容</h3>
-      </div>
-      <div class="services-grid">
-        <div class="service-card service-card-link">
-          <div class="service-number">SERVICE 01</div>
-          <h3 class="service-title">
-            <a href="/saisei/" class="service-title-link">はじめてのAIスクール 彩成</a>
-          </h3>
-          <p class="service-title-en">AI SCHOOL SAISEI</p>
-          <p class="service-desc">
-            AIに初めて触れる方のためのスクール事業。
-            基礎から実践まで、一人ひとりに寄り添った指導で、
-            日常や仕事に活かせるAI活用力を身につけていただきます。
-          </p>
-          <a href="/saisei/" class="service-link-btn">
-            <span>スクールサイトを見る</span>
-            <span class="service-link-arrow">→</span>
-          </a>
-        </div>
-        <div class="service-card">
-          <div class="service-number">SERVICE 02</div>
-          <h3 class="service-title">AI関連事業</h3>
-          <p class="service-title-en">AI BUSINESS</p>
-          <p class="service-desc">
-            AI教育を起点に、コンサルティングやソリューション提供など、
-            AI技術を活用した幅広い事業の展開を予定しています。
-            学びと実装の両面から、社会に貢献していきます。
+      <section class="company-section" id="company" aria-labelledby="company-title">
+        <div class="company-copy">
+          <p class="eyebrow">Company</p>
+          <h2 id="company-title">会社情報</h2>
+          <p>
+            EIRIAは、AI教育を中心に、学びと挑戦を通じて一人ひとりの可能性が広がる社会を目指します。
           </p>
         </div>
+        <dl class="company-list">
+          <div>
+            <dt>会社名</dt>
+            <dd>株式会社EIRIA（エイリア）</dd>
+          </div>
+          <div>
+            <dt>代表者</dt>
+            <dd>代表取締役 桁山 絢有</dd>
+          </div>
+          <div>
+            <dt>設立</dt>
+            <dd>2026年2月27日</dd>
+          </div>
+          <div>
+            <dt>事業内容</dt>
+            <dd>AI教育事業、AI活用支援、Web制作・運用、SNS運用補助、資料制作</dd>
+          </div>
+          <div>
+            <dt>所在地</dt>
+            <dd>〒169-0073 東京都新宿区百人町1-9-14 沖マンション203</dd>
+          </div>
+          <div>
+            <dt>連絡先</dt>
+            <dd><a href="mailto:eiria@eiria-ltd.com">eiria@eiria-ltd.com</a></dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="policy-section" id="privacy" aria-labelledby="privacy-title">
+        <div class="section-heading compact">
+          <p class="eyebrow">Privacy Policy</p>
+          <h2 id="privacy-title">プライバシーポリシー</h2>
+          <p>当社サービスにおける個人情報の取り扱いについて定めます。</p>
+        </div>
+        <details class="policy-box">
+          <summary>プライバシーポリシーを確認する</summary>
+          <div class="policy-content">
+            <p>
+              株式会社EIRIA（以下「当社」といいます。）は、当社が提供するサービスにおいて取得する
+              個人情報の重要性を認識し、個人情報の保護に関する法律および関連法令を遵守し、
+              適切に取り扱うことをここに定めます。
+            </p>
+            <h3>1. 個人情報の取得について</h3>
+            <p>当社は、適法かつ公正な手段によって、以下のような個人情報を取得する場合があります。</p>
+            <ul>
+              <li>氏名</li>
+              <li>住所</li>
+              <li>電話番号</li>
+              <li>メールアドレス</li>
+              <li>生年月日</li>
+              <li>サービス利用履歴</li>
+              <li>その他当社サービスの提供に必要な情報</li>
+            </ul>
+            <h3>2. 個人情報の利用目的</h3>
+            <p>当社は、取得した個人情報を以下の目的のために利用いたします。</p>
+            <ul>
+              <li>当社サービスの提供および運営</li>
+              <li>お問い合わせへの対応</li>
+              <li>サービスに関するご案内・ご連絡</li>
+              <li>セミナー・イベント等のご案内</li>
+              <li>サービス改善および新サービス開発のための分析</li>
+              <li>不正利用の防止および安全管理</li>
+              <li>法令に基づく対応</li>
+            </ul>
+            <h3>3. 個人情報の第三者提供</h3>
+            <p>
+              当社は、法令に基づく場合、人の生命・身体または財産の保護のために必要な場合、
+              公的機関からの正当な要請があった場合を除き、本人の同意なく個人情報を第三者に提供することはありません。
+            </p>
+            <h3>4. 個人情報の管理</h3>
+            <p>
+              当社は、個人情報の漏えい、滅失、改ざん、不正アクセス等を防止するため、
+              適切な安全管理措置を講じます。
+            </p>
+            <h3>5. 個人情報の開示・訂正・削除</h3>
+            <p>
+              ご本人から自己の個人情報について開示、訂正、削除等の請求があった場合には、
+              本人確認を行ったうえで、合理的な範囲で速やかに対応いたします。
+            </p>
+            <h3>6. Cookie（クッキー）について</h3>
+            <p>
+              当社のウェブサイトでは、サービス向上および利用状況の分析のためにCookieを使用する場合があります。
+              Cookieにより取得される情報には、個人を特定する情報は含まれません。
+            </p>
+            <h3>7. プライバシーポリシーの変更</h3>
+            <p>
+              本ポリシーは、法令の変更やサービス内容の変更に応じて改定される場合があります。
+              変更後の内容は、当社ウェブサイトに掲載した時点で効力を生じるものとします。
+            </p>
+            <h3>8. お問い合わせ窓口</h3>
+            <p>
+              個人情報の取り扱いに関するお問い合わせは、下記窓口までご連絡ください。<br>
+              株式会社EIRIA<br>
+              E-mail：<a href="mailto:eiria@eiria-ltd.com">eiria@eiria-ltd.com</a><br>
+              所在地：東京都新宿区百人町1-9-14 沖マンション203
+            </p>
+            <p>
+              制定日：2026年2月27日<br>
+              株式会社EIRIA<br>
+              代表取締役　桁山 絢有
+            </p>
+          </div>
+        </details>
+      </section>
+
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="contact-copy">
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-title">ご相談はこちら</h2>
+          <p>
+            EIRIAの事業相談、はじめてのAIスクール彩成との連携、Web・SNS・資料制作、AI活用支援など、
+            検討段階からご相談ください。
+          </p>
+        </div>
+        <form
+          class="contact-form"
+          name="contact"
+          action="mailto:eiria@eiria-ltd.com"
+          method="post"
+          enctype="text/plain"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden-field">
+            <label>入力しないでください <input name="bot-field"></label>
+          </p>
+          <label>
+            お名前
+            <input type="text" name="name" autocomplete="name" placeholder="山田 花子" required>
+          </label>
+          <label>
+            企業名・団体名
+            <input type="text" name="company" autocomplete="organization" placeholder="株式会社EIRIA">
+          </label>
+          <label>
+            メールアドレス
+            <input type="email" name="email" autocomplete="email" placeholder="hello@example.com" required>
+          </label>
+          <label>
+            電話番号
+            <input type="tel" name="phone" autocomplete="tel" placeholder="090-0000-0000">
+          </label>
+          <label>
+            ご相談内容
+            <select name="topic">
+              <option>EIRIAの事業について</option>
+              <option>はじめてのAIスクール彩成について</option>
+              <option>Web制作・運用について</option>
+              <option>SNS・資料制作について</option>
+              <option>説明会・協業について</option>
+              <option>その他</option>
+            </select>
+          </label>
+          <label>
+            メッセージ
+            <textarea name="message" rows="5" placeholder="相談したい内容を簡単にご記入ください" required></textarea>
+          </label>
+          <button class="button primary form-button" type="submit">送信する</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <img src="assets/eiria-logo.png" alt="株式会社EIRIA" class="footer-logo">
+        <p>自分を認識し、自分の力で未来を切り開く。</p>
       </div>
-      <div class="services-footer">
-        <a href="services.html" class="btn">View More</a>
-      </div>
-    </div>
-  </section>
+      <nav class="footer-nav" aria-label="フッターナビゲーション">
+        <a href="#privacy">プライバシーポリシー</a>
+        <a href="#sai">彩成紹介</a>
+      </nav>
+      <p>© 2026 EIRIA Inc. All Rights Reserved.</p>
+    </footer>
 
-  <!-- Message Teaser -->
-  <section class="message-teaser">
-    <div class="message-teaser-inner">
-      <span class="section-label">Message</span>
-      <div class="message-quote-mark">"</div>
-      <p class="message-quote">
-        テクノロジーが進化する時代だからこそ、<br>
-        大切なのは「誰が使うか」ではなく、<br>
-        どのように<span class="accent">未来をつくっていくか</span>。
-      </p>
-      <p class="message-attribution">代表取締役 桁山 絢有</p>
-      <a href="company.html#message" class="btn">代表挨拶を読む</a>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
-  <section class="cta-section">
-    <div class="cta-inner">
-      <div class="cta-eiria-kun">
-        <img src="images/eiria-kun-ok.png" alt="EIRIAくんOKポーズ">
-      </div>
-      <h2 class="cta-title">お気軽にお問い合わせください</h2>
-      <p class="cta-desc">
-        AIスクール「彩成」へのご質問、AI事業に関するご相談など、
-        どんなことでもお気軽にどうぞ。
-      </p>
-      <a href="contact.html" class="btn btn-gold">Contact Us</a>
-    </div>
-  </section>
-</main>
-
-<!-- EIRIAくん フローティング -->
-<a href="contact.html" class="eiria-kun-float" aria-label="お問い合わせ">
-  <span class="eiria-kun-tooltip">お問い合わせはこちら!</span>
-  <img src="images/eiria-kun-wave.png" alt="EIRIAくん">
-</a>
-
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-brand">
-      <img src="images/eiria-logo.png" alt="株式会社EIRIA">
-      <p>
-        AI教育を中心に、<br>
-        学びと挑戦を通じて、<br>
-        一人ひとりの可能性が広がる<br>
-        社会を目指してまいります。
-      </p>
-    </div>
-    <div class="footer-col">
-      <h4>Sitemap</h4>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="company.html">Company</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Information</h4>
-      <ul>
-        <li><a href="company.html#message">代表挨拶</a></li>
-        <li><a href="privacy.html">プライバシーポリシー</a></li>
-        <li><a href="contact.html">お問い合わせ</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    © 2026 EIRIA Inc. All Rights Reserved.
-  </div>
-</footer>
-
-<script src="js/main.js"></script>
-</body>
+    <script src="script.js?v=13"></script>
+  </body>
 </html>
