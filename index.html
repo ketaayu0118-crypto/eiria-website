@@ -3,16 +3,25 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="6sI3y0AbCGE809boKg-pbfC9tGhT839_GTPbYbypLKM">
     <title>株式会社EIRIA | AI教育・AI活用支援・制作運用</title>
     <meta
       name="description"
       content="株式会社EIRIAは、AI教育、AI活用支援、Web・SNS・資料制作を通じて、一人ひとりの学びと挑戦を実務につなげる会社です。"
     >
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-TC70BFG3ND"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-TC70BFG3ND');
+    </script>
     <link rel="icon" type="image/png" href="assets/eiria-logo.png">
     <link rel="preload" as="image" href="assets/eiria-cyberverse-hero.png">
     <link rel="preload" as="image" href="assets/eiria-story-portal.png">
     <link rel="preload" as="image" href="assets/eiria-support-cockpit.png">
-    <link rel="stylesheet" href="styles.css?v=13">
+    <link rel="stylesheet" href="styles.css?v=9">
   </head>
   <body>
     <header class="site-header" aria-label="サイトヘッダー">
@@ -36,10 +45,6 @@
         <a href="#company">会社情報</a>
         <a href="#sai">彩成紹介</a>
       </nav>
-      <div class="language-switch" aria-label="表示言語">
-        <button type="button" class="is-active" data-lang="ja" aria-pressed="true">JP</button>
-        <button type="button" data-lang="en" aria-pressed="false">EN</button>
-      </div>
       <a class="header-cta" href="#contact">相談する</a>
     </header>
 
@@ -64,7 +69,7 @@
           </p>
           <div class="hero-actions" aria-label="主要アクション">
             <a class="button primary" href="#contact">事業について相談する</a>
-            <a class="button secondary" href="https://saisei-school.com/" target="_blank" rel="noopener">彩成サイトを見る</a>
+            <a class="button secondary" href="#sai">彩成紹介を見る</a>
           </div>
           <div class="hero-points" aria-label="EIRIAの提供価値">
             <span>AI教育事業</span>
@@ -248,7 +253,7 @@
               <li>文章・資料・画像・Webの実践</li>
               <li>成果物レビューと品質管理</li>
             </ul>
-            <a class="text-link" href="https://saisei-school.com/" target="_blank" rel="noopener">彩成のサイトを見る</a>
+            <a class="text-link" href="#contact">彩成について相談する</a>
           </article>
           <article class="service-card featured">
             <div class="service-number">Service 02</div>
@@ -669,40 +674,20 @@
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
         <div class="contact-copy">
           <p class="eyebrow">Contact</p>
-          <h2 id="contact-title">ご相談はこちら</h2>
+          <h2 id="contact-title">まずは、今考えていることを聞かせてください。</h2>
           <p>
             EIRIAの事業相談、はじめてのAIスクール彩成との連携、Web・SNS・資料制作、AI活用支援など、
             検討段階からご相談ください。
           </p>
         </div>
-        <form
-          class="contact-form"
-          name="contact"
-          action="mailto:eiria@eiria-ltd.com"
-          method="post"
-          enctype="text/plain"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
-        >
-          <input type="hidden" name="form-name" value="contact">
-          <p class="hidden-field">
-            <label>入力しないでください <input name="bot-field"></label>
-          </p>
+        <form class="contact-form" action="#" method="post">
           <label>
             お名前
-            <input type="text" name="name" autocomplete="name" placeholder="山田 花子" required>
-          </label>
-          <label>
-            企業名・団体名
-            <input type="text" name="company" autocomplete="organization" placeholder="株式会社EIRIA">
+            <input type="text" name="name" autocomplete="name" placeholder="山田 花子">
           </label>
           <label>
             メールアドレス
-            <input type="email" name="email" autocomplete="email" placeholder="hello@example.com" required>
-          </label>
-          <label>
-            電話番号
-            <input type="tel" name="phone" autocomplete="tel" placeholder="090-0000-0000">
+            <input type="email" name="email" autocomplete="email" placeholder="hello@example.com">
           </label>
           <label>
             ご相談内容
@@ -717,7 +702,7 @@
           </label>
           <label>
             メッセージ
-            <textarea name="message" rows="5" placeholder="相談したい内容を簡単にご記入ください" required></textarea>
+            <textarea name="message" rows="5" placeholder="相談したい内容を簡単にご記入ください"></textarea>
           </label>
           <button class="button primary form-button" type="submit">送信する</button>
         </form>
@@ -736,6 +721,6 @@
       <p>© 2026 EIRIA Inc. All Rights Reserved.</p>
     </footer>
 
-    <script src="script.js?v=13"></script>
+    <script src="script.js"></script>
   </body>
 </html>
